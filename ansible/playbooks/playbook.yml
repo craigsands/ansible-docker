@@ -1,0 +1,20 @@
+---
+
+- name: hosts
+  gather_facts: false
+  hosts: localhost
+  connection: local
+  tasks:
+    - debug:
+        msg: "The value of hosts is {{ lookup('file', '/etc/ansible/hosts') }}"
+
+- name: deploy
+  gather_facts: true
+  hosts:
+    - centos01
+    - centos02
+  tasks:
+    - name: debug
+      debug:
+        msg: "The hostname is {{ ansible_hostname }} and the OS is {{ ansible_distribution }} {{ ansible_distribution_major_version }}."
+

@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+  ansible:
+    build: .
+    entrypoint: ["ansible-playbook", "-v", "--private-key=/root/.ssh/ssh_host_rsa_key", "playbook.yml"]
+    # entrypoint: [""]
+    # command: tail -f /dev/null
+    environment:
+      - ANSIBLE_HOST_KEY_CHECKING=False
+    volumes:
+      - "./playbooks:/ansible/playbooks"
+    networks:
+      skynet:
+
+networks:
+  skynet:
+    external:
+      name: skynet

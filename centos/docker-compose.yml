@@ -1,0 +1,16 @@
+version: '3.5'
+
+services:
+  centos01:
+    build: .
+    networks:
+      skynet:
+
+  centos02:
+    build: .
+    networks:
+      skynet:
+
+networks:
+  skynet:
+    name: skynet
