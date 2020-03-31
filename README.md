@@ -21,3 +21,13 @@ Shell into ansible container (for debugging)
 ```
 docker exec -it ansible_ansible_1 /bin/sh
 ```
+
+Retrieve IP address from running container
+```
+docker inspect -f "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" centos_centos01_1
+```
+
+SSH from host
+```
+ssh -i ansible/ssh_host_rsa_key user@localhost -p 2222
+```
